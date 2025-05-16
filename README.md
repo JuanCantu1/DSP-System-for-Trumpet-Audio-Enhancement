@@ -44,9 +44,6 @@ This subproject serves as a proof of concept for accurate trumpet pitch detectio
 * `frequency_graph.png`: Annotated graph of pitch over time
 * `raw_audio.wav`: Raw audio captured by the server and transmitted to the client
 
-> 🔗 This phase is developed as a standalone Python-based client-server system.
-> 📂 See: `IoT Frequency Analysis System/`
-
 ---
 
 ## 🔧 Phase 2: Real-Time DSP on FPGA (Upcoming)
