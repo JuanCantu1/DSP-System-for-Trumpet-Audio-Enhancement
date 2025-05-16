@@ -2,13 +2,16 @@
 
 ## 📌 Overview
 
-This project aims to build a real-time **audio enhancement system for trumpet** using an FPGA platform (DE1-SoC). It is structured in two phases:
+This project aims to build a real-time **audio enhancement system for trumpet** using an FPGA platform (DE1-SoC). The work is divided into three integrated phases:
 
-1. **Phase 1 – Pitch Detection System** ✅ *(Completed)*
-   A real-time frequency detection and note-mapping system using Python and IoT concepts to analyze trumpet audio.
+1. **Phase 1 – Pitch Detection System on HPS** ✅ *(Completed)*
+   Real-time frequency detection and note-mapping using Python running on the ARM Cortex-A9 (HPS).
 
-2. **Phase 2 – FPGA-Based DSP Effects** 🔄 *(In Progress)*
-   Real-time digital signal processing using Verilog on the DE1-SoC board, targeting effects like **reverb**, **echo removal**, and **pitch correction**.
+2. **Phase 2 – Real-Time DSP on FPGA** 🔄 *(In Progress)*
+   Verilog-based DSP effects (reverb, echo removal, pitch correction) implemented on the Cyclone V FPGA.
+
+3. **Phase 3 – Integrated System** 🔜 *(Planned)*
+   Combines Phase 1 and Phase 2 into a full-stack real-time audio enhancement pipeline.
 
 ---
 
