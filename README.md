@@ -93,7 +93,7 @@ This phase transitions the system from software-based analysis to **hardware-acc
 | Frequency Graph + CSV Output     | ✅ Completed    |
 | Client-Server Communication      | ✅ Completed    |
 | HPS `.wav` Capture + Transfer    | 🔄 In Progress |
-| FPGA DSP Effects (Verilog)       | 🔜 Planned     |
+| FPGA DSP Effects (Verilog)       | 🔄 In Progress |
 
 ---
 
