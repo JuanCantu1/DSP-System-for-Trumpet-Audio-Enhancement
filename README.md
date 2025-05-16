@@ -84,28 +84,41 @@ This phase transitions the system from software-based analysis to **hardware-acc
 
 ---
 
+## 🔗 Phase 3: Integrated Audio Enhancement System (Planned)
+
+This final phase merges Phase 1 and Phase 2 into a cohesive pipeline.
+
+<img src="https://github.com/user-attachments/assets/711120dc-776c-41f0-a3df-b6682602bf07" alt="Integrated System Block Diagram" width="600"/>
+
+
+### 🧩 Integration Goals
+
+* Real-time audio capture and enhancement
+* Seamless communication between HPS and FPGA
+* Live output through codec or headphone jack
+* Maybe a user interface (GUI or Web-based) for effect control
+
+---
+
 ## ✅ Current Status
 
-| Component                        | Status         |
-| -------------------------------- | -------------- |
-| Audio Input (Microphone, Python) | ✅ Completed    |
-| Pitch Detection + Note Mapping   | ✅ Completed    |
-| Frequency Graph + CSV Output     | ✅ Completed    |
-| Client-Server Communication      | ✅ Completed    |
-| HPS `.wav` Capture + Transfer    | 🔄 In Progress |
-| FPGA DSP Effects (Verilog)       | 🔄 In Progress |
+| Component                       | Status         |
+| ------------------------------- | -------------- |
+| Phase 1: Pitch Detection on HPS | ✅ Completed    |
+| Phase 2: FPGA DSP Effects       | 🔄 In Progress |
+| Phase 3: System Integration     | 🔜 Planned     |
 
 ---
 
 ## 🔭 Next Steps
 
-* 📂 Implement `.wav` file or audio stream handling on HPS
-* 🔌 Develop AXI or FIFO-based audio interface from HPS to FPGA
-* 🧠 Design and test Verilog DSP modules for:
+* 📂 Finalize `.wav` streaming from HPS to FPGA
+* 🔌 Implement AXI/FIFO audio bridge
+* 🧠 Design and test FPGA DSP modules:
 
   * Pitch correction
   * Reverb
   * Echo suppression
-* 🎧 Interface processed audio with WM8731 codec for playback
-* 📡 Prototype optional web/mobile control dashboard
-* 🎺 Test full pipeline with live trumpet input
+* 🎧 Interface FPGA output to WM8731
+* 🖥️ Build effect control interface
+* 🎺 Validate system with live trumpet input
