@@ -46,41 +46,81 @@ This subproject serves as a proof of concept for accurate trumpet pitch detectio
 
 ---
 
-## 🔧 Phase 2: Real-Time DSP on FPGA (Upcoming)
+## 🔧 Phase 2: Real-Time DSP on FPGA (In Progress)
 
-This phase transitions the system from software-based analysis to **hardware-accelerated audio processing** using the DE1-SoC platform. The design leverages both the ARM processor (HPS) and the FPGA fabric in a coordinated pipeline.
+This phase focuses on developing a real-time **digital signal processor** (DSP) fully in Verilog to process trumpet audio using the Cyclone V FPGA fabric on the DE1-SoC.
 
-### 🔁 System Architecture
+We are **not using the HPS in this phase**. The input audio is provided as `.mem` files (converted from `.wav`), and the output is analyzed via simulation, waveform/spectrogram tools, and listening tests.
 
-> The **ARM processor** captures or receives `.wav` audio and streams it to the **FPGA**, which applies digital signal processing (DSP) effects in real time and returns the enhanced output.
+### 🎧 DSP Modules (Verilog)
 
-**Responsibilities:**
+Each module operates on a streaming, sample-by-sample basis. Effects can be selectively enabled via control signals.
 
-* **HPS (ARM Cortex-A9)**
+| Module        | Functionality                                           | Enable Control         |
+|---------------|---------------------------------------------------------|-------------------------|
+| `noise_gate`  | Suppresses quiet background noise below a threshold     | `enable_noise_gate`     |
+| `autotune`    | Detects pitch and snaps it to the nearest musical note  | `enable_autotune`       |
+| `tone_filter` | Smooths harsh transitions for a cleaner tone            | `enable_tone_filter`    |
+| `reverb`      | Adds acoustic ambience for a fuller sound               | `enable_reverb`         |
 
-  * Handles `.wav` file I/O and audio stream capture
-  * Manages protocol interfaces (e.g., AXI, DMA, or FIFO)
-  * Initiates and monitors FPGA processing
+All logic is pipelined and tested using a Verilog testbench that takes `.mem` input and outputs `.mem` and pitch logs.
 
-* **FPGA (Cyclone V)**
+### 🧪 Simulation and Analysis Workflow
 
-  * Executes DSP effects in parallel, with low-latency hardware logic
-  * Processes audio in real time via AXI/Avalon interfaces
-  * Outputs enhanced audio to codec or back to HPS
+1. **Input WAV → .mem**: We convert `.wav` files to `.mem` (16-bit sample format) for simulation input.
+2. **Verilog Testbench**: Feeds the samples through the DSP chain and outputs `processed_output.mem` and `pitch_log.csv`.
+3. **.mem → WAV/Graphs**: Python tools convert `.mem` back to `.wav` and generate:
+   - Waveform comparisons
+   - Spectrogram visualizations
+   - Frequency tracking from `pitch_log.csv`
 
-### 🎧 Planned DSP Modules (Implemented on FPGA)
+This setup allows rapid testing without requiring real-time audio or the HPS.
 
-* **🎤 Reverb**: Simulates acoustic reflections for natural resonance
-* **🔇 Echo Removal**: Suppresses delayed audio artifacts
-* **🎵 Pitch Correction**: Fine-tunes inaccuracies in trumpet pitch
+### 🎼 C-Scale Simulation Comparison
 
-### 🧱 Hardware Stack
+We tested the DSP using a synthetic **C scale** played by a trumpet-like tone.
 
-* **Board**: DE1-SoC (Cyclone V SoC FPGA + ARM Cortex-A9)
-* **Audio Codec**: WM8731 (connected via I²S)
-* **Audio Format**: `.wav` (uncompressed, 16-bit PCM)
-* **Communication Protocol**: AXI Stream or Avalon ST between HPS and FPGA
-* **Target Latency**: <15 ms total (input to output)
+#### 🔉 Input/Output Files
+
+- `C-Scale.mem` — Input to DSP  
+- `Modified_C-Scale.mem` — Output from DSP  
+- `C-Scale.wav`, `Modified_C-Scale.wav` — Playback versions for listening and graphing
+
+#### 📊 Waveform Comparison
+
+<img src="https://github.com/user-attachments/assets/fa7f24ec-608d-4a3f-a8f8-5049691372ad" width="100%" />
+
+#### 🌈 Spectrogram Comparison
+
+<img src="https://github.com/user-attachments/assets/7e00d754-f969-4565-a5f2-4182532c1f48" width="100%" />
+
+### 🔧 RTL Design Overview
+
+All effects are instantiated in a top-level `audio_processor` module, connected in a streaming pipeline. Each stage can be toggled using control inputs.
+
+#### 🧩 RTL Schematic
+
+<img src="https://github.com/user-attachments/assets/80ab9a48-5218-454b-9dba-6ed5e4d335c4" alt="RTL Schematic of Audio Processor" width="100%" />
+
+### 🧰 Tools and Scripts
+
+Support tools (Python-based) help automate and visualize the pipeline:
+
+- Convert `.wav` ↔ `.mem` (16-bit PCM)
+- Plot zoomed-in waveforms and full spectrograms
+- Compare tuned and detuned sine waveforms
+- Log estimated vs. target pitch (`pitch_log.csv`)
+
+### ⚙️ Current Features and Limitations
+
+✅ Modular Verilog-based DSP design  
+✅ Per-module enable control for experimentation  
+✅ Accurate pitch tracking on synthetic tones  
+✅ `.mem`-based simulation and conversion pipeline  
+🛠️ Needs tuning of smoothing and reverb effects  
+🛠️ Output distortion in some test cases under review  
+🚫 Not yet integrated with real-time audio input/output or HPS
+
 
 ---
 
