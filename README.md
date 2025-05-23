@@ -78,7 +78,7 @@ This setup allows rapid testing without requiring real-time audio or the HPS.
 
 ### 🎼 C-Scale Simulation Comparison
 
-We tested the DSP using a synthetic **C scale** played by a trumpet-like tone.
+We tested the DSP using a **real trumpet C scale recording** sourced from an online performance. The `.wav` was converted to `.mem` and processed through our Verilog DSP chain.
 
 #### 🔉 Input/Output Files
 
