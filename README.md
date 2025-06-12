@@ -100,7 +100,7 @@ All effects are instantiated in a top-level `audio_processor` module, connected 
 
 #### 🧩 RTL Schematic
 
-<img src="https://github.com/user-attachments/assets/80ab9a48-5218-454b-9dba-6ed5e4d335c4" alt="RTL Schematic of Audio Processor" width="100%" />
+<img src="https://github.com/user-attachments/assets/ebb8b56c-fbb5-4750-86ca-471e8a5724cb" alt="RTL Schematic of Audio Processor" width="100%" />
 
 ### 🧰 Tools and Scripts
 
