@@ -112,14 +112,18 @@ Simulation results confirm sub-15 ms latency across the entire path, suitable fo
 
 ---
 
-### 🧪 Performance Metrics
+### 🧪 Performance Goals & Target Metrics
 
-| Metric | Value |
-|---------|-------|
-| **Latency** | < 15 ms end-to-end |
-| **Accuracy** | Stable pitch correction across 3.6 M samples |
-| **Pipeline** | Fully parameterized and switchable |
-| **Simulation** | Real trumpet audio validated through `.mem`-based testbench |
+| **Metric** | **Target / Goal** | **Description** |
+|-------------|-------------------|-----------------|
+| **Latency** | < 15 ms end-to-end | Maintain imperceptible delay for real-time playability in live trumpet performance. |
+| **SNR (Signal-to-Noise Ratio)** | > 60 dB | Achieve clean output with effective noise gating and dynamic range compression. |
+| **Pitch Accuracy** | ±1 semitone | Autotune should stabilize pitch within one semitone of target note for live input. |
+| **Fixed-Point Precision** | 16-bit | Maintain high-quality DSP processing using resource-efficient arithmetic. |
+| **Resource Utilization** | < 70 % LUT, < 60 % FF | Ensure design fits comfortably within Cyclone V FPGA fabric for real-time operation. |
+| **Sample Rate** | 48 kHz | Match standard audio rate for compatibility with WM8731 codec and real-time systems. |
+| **System Throughput** | 1 sample/clk | Fully pipelined design enabling continuous audio streaming without stalls. |
+
 
 ---
 
@@ -128,16 +132,18 @@ Simulation results confirm sub-15 ms latency across the entire path, suitable fo
 ```
 fpga-trumpet-dsp/
 ├─ verilog/
-│  ├─ src/        # All DSP modules and audio_processor.v
-│  ├─ sim/        # audio_tb.v and small .mem stimuli
-│  └─ vivado/     # TCL for project recreation
+│  ├─ src/        # All DSP modules and audio_processor.sv (stubs included)
+│  └─ sim/        # audio_tb.sv and tiny .mem stimulus
 ├─ python/
 │  ├─ io/         # wav_to_mem.py, mem_to_wav.py
-│  ├─ analysis/   # spectrograms, comparisons
-│  └─ synth/      # test tone generators
-├─ iot-frequency/ # Optional pitch tracking client/server + PDF
-├─ docs/          # Block diagrams, plots, and figures
-└─ media/         # Demo MP4 and images for README
+│  ├─ analysis/   # waveform/spectrogram & comparison scripts
+│  └─ synth/      # sine + scale generators
+├─ iot-frequency/ # client/server placeholders + README
+├─ docs/          # put your draw.io export + Vivado RTL screenshot here
+├─ media/         # Demo video + images for README
+├─ .gitignore     # Vivado/Python/audio artifacts ignored
+└─ LICENSE        # MIT
+
 ```
 
 ---
