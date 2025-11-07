@@ -156,14 +156,6 @@ Originally built as the prototype for HPS-side pitch tracking, now used as a fro
 
 ---
 
-### 🧭 Future Improvements
-- Replace zero-crossing pitch detection with **AMDF/YIN** for robustness.  
-- Integrate live audio I/O via **WM8731 codec** on DE1-SoC.  
-- Real-time visualization through **HPS-to-FPGA bridge**.  
-- Hardware resource profiling and fixed-point optimization.  
-
----
-
 ### 📚 Technologies
 `Verilog` · `Python` · `Vivado` · `NumPy` · `Librosa` · `Cyclone V FPGA` · `Audio DSP` · `Embedded Systems`
 
