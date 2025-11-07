@@ -132,17 +132,30 @@ Simulation results confirm sub-15 ms latency across the entire path, suitable fo
 ```
 fpga-trumpet-dsp/
 ├─ verilog/
-│  ├─ src/        # All DSP modules and audio_processor.sv (stubs included)
-│  └─ sim/        # audio_tb.sv and tiny .mem stimulus
+│  ├─ src/           # All DSP modules (autotune, tone_filter, compressor, etc.)
+│  └─ sim/           # audio_tb.v + sample .mem data
+│
 ├─ python/
-│  ├─ io/         # wav_to_mem.py, mem_to_wav.py
-│  ├─ analysis/   # waveform/spectrogram & comparison scripts
-│  └─ synth/      # sine + scale generators
-├─ iot-frequency/ # client/server placeholders + README
-├─ docs/          # put your draw.io export + Vivado RTL screenshot here
-├─ media/         # Demo video + images for README
-├─ .gitignore     # Vivado/Python/audio artifacts ignored
-└─ LICENSE        # MIT
+│  ├─ io/            # wav_to_mem.py, mem_to_wav.py converters
+│  ├─ analysis/      # waveform, spectrogram, and pitch comparison scripts
+│  └─ synth/         # sinewave and trumpet-scale generators
+│
+├─ sub_project_iot/   # IoT project that started the DSP
+│  ├─ Client Folder/  # Python client for frequency visualization
+│  ├─ Server Folder/  # Server collecting frequency data
+│  ├─ media/          # Preliminary_Design.jpg, any figures
+│
+├─ docs/
+│  ├─ IoT_Frequency_Analysis_System_for_Musical_Instruments.pdf
+│  ├─ schematic.pdf
+│  ├─ rtl.jpg
+│  └─ System_Diagram.png
+│
+├─ media/
+│  └─ Demo.mp4        # IoT Sub Project Demo
+│
+├─ LICENSE
+└─ README.md
 
 ```
 
