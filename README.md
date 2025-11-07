@@ -161,11 +161,12 @@ fpga-trumpet-dsp/
 
 ---
 
-### 📡 IoT Frequency Analysis (Companion Project)
-A complementary Python system for real-time frequency detection, TCP/IP data logging, and visualization.  
-Originally built as the prototype for HPS-side pitch tracking, now used as a front-end analysis tool.  
+### 📡 Frequency Analysis & Visualization Framework
+A complementary system for **real-time frequency detection, TCP/IP data logging, and visualization**.  
+Originally developed as the prototype for HPS-side pitch tracking on the DE1-SoC, it now serves as a **front-end analysis and validation tool** for the FPGA DSP pipeline.  
+It provides live spectral feedback and note mapping used during the early development phase of the trumpet audio processor.
 
-📄 See: `IoT Final Project/IoT_Frequency_Analysis_System_for_Musical_Instruments.pdf`
+📄 **Read the Paper:** [*IoT Frequency Analysis System for Musical Instruments (PDF)*](https://github.com/JuanCantu1/fpga-trumpet-dsp/blob/main/docs/IoT_Frequency_Analysis_System_for_Musical_Instruments.pdf)
 
 ---
 
