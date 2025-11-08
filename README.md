@@ -12,8 +12,7 @@ The system currently simulates all DSP modules in Vivado and interfaces through 
 ### 🧩 System Architecture
 
 
-<img src="https://github.com/user-attachments/assets/6254f99b-831c-4ca1-b2d7-eaa3e7d0eff9" width="100%" />
-
+<img src="https://github.com/user-attachments/assets/1c1c2057-8b2f-4e74-9832-d0130b03db0e" width="100%" />
 
 Each block can be toggled independently from the **top-level module `audio_processor.v`**, enabling flexible experimentation and effect chaining.
 
